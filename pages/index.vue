@@ -1,8 +1,9 @@
 <script setup lang="ts">
+const route = useRoute();
 const story = await useStoryblok(
   "home",
   {
-    version: "draft",
+    version: route.query._storyblok ? "draft" : "published",
     resolve_relations: "featuredProjects.projects",
   },
   {
